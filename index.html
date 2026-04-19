@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Assiette d'Or | The Pinnacle of Luxury Dining</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Experience world-class Michelin star gastronomy at L'Assiette d'Or. Ultra-luxury dining, private vaults, and signature tasting menus in the heart of London.">
+  <meta name="keywords" content="Luxury Dining, Michelin Star, Fine Dining London, Gastronomy, French Cuisine">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@100;200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Animations (AOS) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F9E6A1;
+      --gold-dark: #996515;
+      --black: #080808;
+      --charcoal: #121212;
+      --white: #FBFBFA;
+      --text-gray: #A0A0A0;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 10px; }
+
+    /* Typography */
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 20px 60px;
+      background: rgba(8, 8, 8, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--white);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .logo span { color: var(--gold); }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 50px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      transition: var(--transition);
+      opacity: 0.6;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold);
+      padding: 12px 30px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.4), rgba(8, 8, 8, 0.8)), url('assets/images/hero.png');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transform: scale(1.1);
+      animation: zoomOut 20s infinite alternate;
+    }
+
+    @keyframes zoomOut {
+      from { transform: scale(1.1); }
+      to { transform: scale(1); }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      z-index: 1;
+    }
+
+    .hero-content h4 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(60px, 8vw, 120px);
+      line-height: 0.9;
+      margin-bottom: 40px;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: var(--text-gray);
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Scroll Indicator */
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.5;
+    }
+
+    .mouse {
+      width: 25px;
+      height: 40px;
+      border: 1px solid var(--white);
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .mouse::after {
+      content: '';
+      width: 2px;
+      height: 6px;
+      background: var(--white);
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scroll 2s infinite;
+    }
+
+    @keyframes scroll {
+      0% { opacity: 1; top: 8px; }
+      100% { opacity: 0; top: 25px; }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 160px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 100px;
+      text-align: center;
+    }
+
+    .section-header h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .section-header h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 400;
+    }
+
+    /* Philosophy Section */
+    .philosophy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 120px;
+      align-items: center;
+    }
+
+    .overlap-img {
+      position: relative;
+      width: 100%;
+    }
+
+    .img-main {
+      width: 85%;
+      height: 700px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .img-sub {
+      position: absolute;
+      bottom: -60px;
+      right: 0;
+      width: 50%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+      border: 8px solid var(--black);
+    }
+
+    .philosophy-content h3 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: var(--gold);
+    }
+
+    .philosophy-content p {
+      font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .btn-underline {
+      display: inline-block;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .btn-underline::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .btn-underline:hover::after {
+      width: 100%;
+    }
+
+    /* Signature Menu */
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .dish-card {
+      position: relative;
+      overflow: hidden;
+      height: 500px;
+      cursor: pointer;
+    }
+
+    .dish-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .dish-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(8, 8, 8, 0.9));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .dish-card:hover img { transform: scale(1.1); }
+    .dish-card:hover .dish-overlay { opacity: 1; padding-bottom: 50px; }
+
+    .dish-overlay h3 { font-size: 32px; margin-bottom: 10px; }
+    .dish-overlay p { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+
+    /* The Bar Section */
+    .bar-section {
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bar-img {
+      height: 800px;
+      background: url('assets/images/bar.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bar-content {
+      padding: 100px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Floating CTA */
+    .floating-reservation {
+      position: fixed;
+      left: 40px;
+      bottom: 40px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 20px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .floating-reservation:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Menu Tabs */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .menu-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-gray);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      padding: 10px 20px;
+      transition: var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .menu-tab.active {
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .menu-item:hover {
+      border-color: var(--gold);
+      transform: translateX(10px);
+    }
+
+    .menu-info h4 { font-size: 24px; margin-bottom: 5px; }
+    .menu-info p { font-size: 14px; color: var(--text-gray); font-weight: 300; }
+    .menu-price { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 22px; }
+
+    /* Footer */
+    footer {
+      padding: 120px 0 60px;
+      background: #050505;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 100px;
+    }
+
+    .footer-brand h2 { font-size: 32px; margin-bottom: 24px; letter-spacing: 5px; }
+    .footer-brand p { color: var(--text-gray); font-size: 15px; max-width: 350px; }
+
+    .footer-link-group h5 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .footer-link-group ul { list-style: none; }
+    .footer-link-group li { margin-bottom: 15px; }
+    .footer-link-group a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .footer-link-group a:hover { color: var(--gold); padding-left: 5px; }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 60px;
+      font-size: 12px;
+      color: var(--text-gray);
+      letter-spacing: 1px;
+    }
+
+    /* Response */
+    @media (max-width: 1024px) {
+      .philosophy { grid-template-columns: 1fr; gap: 80px; }
+      .bar-section { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .dish-grid { grid-template-columns: 1fr 1fr; }
+      .menu-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 30px; }
+      .hero-content h1 { font-size: 50px; }
+      .footer-content { grid-template-columns: 1fr; }
+      .dish-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating CTA -->
+  <a href="#reservations" class="floating-reservation">
+    <span class="icon">✥</span>
+    Book Your Table
+  </a>
+
+  <header id="navbar">
+    <a href="#" class="logo">L'ASSIETTE <span>D'OR</span></a>
+    <nav>
+      <ul>
+        <li><a href="#philosophy">The Story</a></li>
+        <li><a href="#experience">The Experience</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#reservations" class="nav-cta">Reservations</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h4 data-aos="fade-up">Curating Moments of Excellence</h4>
+      <h1 data-aos="fade-up" data-aos-delay="200">The Art of Fine <br>Gastronomy</h1>
+      <p data-aos="fade-up" data-aos-delay="400">Discover a sanctuary where culinary precision meets aesthetic grandeur. A Michelin-starred journey awaits your presence.</p>
+      <div data-aos="fade-up" data-aos-delay="600">
+        <a href="#menu" class="nav-cta" style="padding: 20px 40px; letter-spacing: 4px;">Explore the Seasons</a>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <div class="mouse"></div>
+      <span style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px;">Scroll</span>
+    </div>
+  </section>
+
+  <section id="philosophy" class="container">
+    <div class="philosophy">
+      <div class="overlap-img" data-aos="fade-right">
+        <img src="assets/images/chef.png" class="img-main" alt="Our Executive Chef">
+        <img src="assets/images/hero.png" class="img-sub" alt="Fine Dining Ambiance">
+      </div>
+      <div class="philosophy-content" data-aos="fade-left">
+        <div class="section-header" style="text-align: left;">
+          <h4>The Vision</h4>
+          <h2>Beyond the Plate</h2>
+        </div>
+        <h3>Culinary Mastery by Chef Julian Laurent</h3>
+        <p>With three decades of exploration across the world's most prestigious kitchens, Chef Laurent brings a philosophy of 'Nature’s Poetry' to L'Assiette d'Or.</p>
+        <p>Every ingredient is a character in a story, every spice a deliberate emotion. We don't just serve meals; we orchestrate experiences that linger in the memory long after the last course.</p>
+        <a href="#" class="btn-underline">Our Philosophy</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="background: var(--charcoal);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h4>Signature Series</h4>
+        <h2>The Collection</h2>
+      </div>
+      <div class="dish-grid">
+        <div class="dish-card" data-aos="zoom-in-up" data-aos-delay="0">
+          <img src="assets/images/dish1.png" alt="Signature Seafood">
+          <div class="dish-overlay">
+            <h3>Ocean's Whisper</h3>
+            <p>Hokkaido Scallops | Caviar | Saffron</p>
+          </div>
+        </div>
+        <div class="dish-card" data-aos="zoom-in-up" data-aos-delay="200">
+          <img src="assets/images/wagyu.png" alt="Wagyu Steak">
+          <div class="dish-overlay">
+            <h3>The Gilded Cut</h3>
+            <p>A5 Wagyu | Black Truffle | 24k Gold</p>
+          </div>
+        </div>
+        <div class="dish-card" data-aos="zoom-in-up" data-aos-delay="400">
+          <img src="assets/images/hero.png" alt="Atmospheric Dining">
+          <div class="dish-overlay">
+            <h3>Eternal Twilight</h3>
+            <p>Signature Tasting Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bar-section">
+    <div class="bar-img" data-aos="fade-right"></div>
+    <div class="bar-content" data-aos="fade-left">
+      <div class="section-header" style="text-align: left;">
+        <h4>The Spirit</h4>
+        <h2>Le Salon Noir</h2>
+      </div>
+      <p style="font-size: 20px; font-weight: 300; margin-bottom: 30px;">Our award-winning mixologists craft botanical elixirs that bridge the gap between classic technique and modern innovation.</p>
+      <p style="color: var(--text-gray); margin-bottom: 40px;">Deep within our cellar lies over 4,000 vintage selections, curated by our Master Sommelier. From the rolling hills of Bordeaux to hidden vineyards in Napa, every bottle carries a legacy of terroir.</p>
+      <div>
+        <a href="#" class="nav-cta">View Cocktail List</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h4>Gastronomic Library</h4>
+        <h2>Tasting & A La Carte</h2>
+      </div>
+      
+      <div class="menu-tabs" data-aos="fade-up">
+        <button class="menu-tab active">The Grand Menu</button>
+        <button class="menu-tab">The Wine Cellar</button>
+        <button class="menu-tab">Dessert Art</button>
+      </div>
+
+      <div class="menu-list" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Lobster Thermidor 'Or'</h4>
+            <p>Atlantic blue lobster, armagnac infusion, gruyère crust.</p>
+          </div>
+          <div class="menu-price">$75</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Black Truffle Risotto</h4>
+            <p>Aged Carnaroli rice, Périgord truffles, 36-month Joya.</p>
+          </div>
+          <div class="menu-price">$58</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Japanese A5 Striploin</h4>
+            <p>Smoked over cherrywood, fermented garlic, bone marrow.</p>
+          </div>
+          <div class="menu-price">$145</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Wild Sea Bass Royale</h4>
+            <p>Line-caught bass, champagne emulsion, micro-herbs.</p>
+          </div>
+          <div class="menu-price">$62</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Venison Loin</h4>
+            <p>Cocoa-rubbed venison, parsnip purée, wild berries.</p>
+          </div>
+          <div class="menu-price">$68</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-info">
+            <h4>Foie Gras de Canard</h4>
+            <p>Seared liver, spiced pear, toasted brioche.</p>
+          </div>
+          <div class="menu-price">$48</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservations" style="background: var(--charcoal);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;">
+        <div data-aos="fade-right">
+          <h2 style="font-size: 56px; margin-bottom: 30px;">An Invitation to Indulge</h2>
+          <p style="font-size: 18px; color: var(--text-gray); margin-bottom: 40px; font-weight: 300;">Experience the very best of fine dining. Due to our limited seating capacity of 24 guests per evening, we recommend booking at least two weeks in advance.</p>
+          <div style="display: flex; gap: 40px;">
+            <div>
+              <h5 style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 11px;">Lunch Service</h5>
+              <p style="font-size: 14px;">Tue - Sat: 12:00 PM - 2:30 PM</p>
+            </div>
+            <div>
+              <h5 style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 11px;">Dinner Service</h5>
+              <p style="font-size: 14px;">Tue - Sun: 6:30 PM - 10:30 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--glass); border: 1px solid var(--glass-border); padding: 60px; border-radius: 4px;" data-aos="fade-left">
+          <h3 style="font-size: 32px; margin-bottom: 40px; text-align: center;">Securing Your Table</h3>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <input type="text" placeholder="Full Name" style="background: var(--black); border: 1px solid var(--glass-border); padding: 18px; color: #fff; width: 100%; outline: none; font-family: inherit;">
+            <input type="email" placeholder="Email Address" style="background: var(--black); border: 1px solid var(--glass-border); padding: 18px; color: #fff; width: 100%; outline: none; font-family: inherit;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <input type="date" style="background: var(--black); border: 1px solid var(--glass-border); padding: 18px; color: #fff; width: 100%; outline: none; font-family: inherit;">
+              <select style="background: var(--black); border: 1px solid var(--glass-border); padding: 18px; color: #fff; width: 100%; outline: none; font-family: inherit;">
+                <option>2 Guests</option>
+                <option>4 Guests</option>
+                <option>6+ Guests</option>
+              </select>
+            </div>
+            <button class="nav-cta" style="background: var(--gold); color: var(--black); border: none; padding: 20px; font-weight: 700; cursor: pointer;">Request Availability</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2 class="serif">L'ASSIETTE <span>D'OR</span></h2>
+          <p>London's temple of gastronomic innovation. Redefining the boundaries of fine dining through artistic precision and seasonal integrity.</p>
+        </div>
+        <div class="footer-link-group">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="#philosophy">The Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#experience">The Bar</a></li>
+            <li><a href="#reservations">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Concierge</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Media Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h5>Visit</h5>
+          <p style="font-size: 14px; color: var(--text-gray);">88 Golden Square, Mayfair<br>London, W1J 8AS<br><br>+44 20 7946 0000</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 L'Assiette d'Or. Crafted for Excellence.
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out-cubic'
+    });
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Chatbot Integration - PRODUCTION URL
+    (function() {
+      const script = document.createElement('script');
+      // Using production URL as requested
+      script.src = 'https://ai.hashthink.com/chatbot-embed.js'; 
+      script.async = true;
+      script.dataset.businessId = 'b6dd1d48-5020-4020-8c29-0c2c641e1670';
+      script.dataset.apiBase = 'https://ai.hashthink.com/api';
+      script.dataset.primaryColor = '#D4AF37';
+      script.dataset.welcomeMessage = 'Welcome to L\'Assiette d\'Or. I am your culinary concierge. How may I assist with your luxury dining experience today?';
+      document.head.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
